@@ -1,0 +1,26 @@
+
+{
+    "short_name": "stay",
+    "name": "stay. journal",
+    "description": "A minimalist, voice-enabled personal journal built on simplicity.",
+    "icons": [
+      {
+        "src": "./icon-512.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "./icon-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "theme_color": "#fdfbf7",
+    "background_color": "#fdfbf7",
+    "orientation": "portrait",
+    "categories": ["productivity", "lifestyle", "utilities"]
+  }
+  

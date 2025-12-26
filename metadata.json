@@ -1,0 +1,7 @@
+{
+  "name": "stay.",
+  "description": "A minimalist, dual-mode personal journal with voice input, daily logging, and organized repositories for thoughts and memories.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
