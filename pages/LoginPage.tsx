@@ -14,25 +14,42 @@ const LoginPage: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isIOS, setIsIOS] = useState(false);
   const [showIOSInstructions, setShowIOSInstructions] = useState(false);
-  const [isStandalone, setIsStandalone] = useState(false);
+  const [isInstallable, setIsInstallable] = useState(false);
 
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   // Check if already installed
+  //   const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone;
+  //   setIsStandalone(isInStandaloneMode);
+
+  //   // Check for iOS
+  //   const userAgent = window.navigator.userAgent.toLowerCase();
+  //   const isIosDevice = /iphone|ipad|ipod/.test(userAgent);
+  //   setIsIOS(isIosDevice);
+
+  //   // Listen for install prompt (Android/Chrome)
+  //   const handleBeforeInstallPrompt = (e: Event) => {
+  //     e.preventDefault();
+  //     setDeferredPrompt(e);
+  //     console.log("PWA install prompt ready");
+  //   };
+
+  //   window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+  //   return () => {
+  //     window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  //   };
+  // }, []);
+
   useEffect(() => {
-    // Check if already installed
-    const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone;
-    setIsStandalone(isInStandaloneMode);
-
-    // Check for iOS
-    const userAgent = window.navigator.userAgent.toLowerCase();
-    const isIosDevice = /iphone|ipad|ipod/.test(userAgent);
-    setIsIOS(isIosDevice);
-
-    // Listen for install prompt (Android/Chrome)
-    const handleBeforeInstallPrompt = (e: Event) => {
+    const handleBeforeInstallPrompt = (e: any) => {
+      // 1. Prevent the mini-infobar from appearing on mobile
       e.preventDefault();
+      // 2. Stash the event so it can be triggered later.
       setDeferredPrompt(e);
-      console.log("PWA install prompt ready");
+      // 3. Update UI notify the user they can install the PWA
+      setIsInstallable(true);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -43,20 +60,34 @@ const LoginPage: React.FC = () => {
   }, []);
 
   const handleInstallClick = async () => {
-    // Handle iOS Instructions
-    if (isIOS) {
-      setShowIOSInstructions(!showIOSInstructions);
-      return;
-    }
-
-    // Handle Android/Desktop Prompt
     if (!deferredPrompt) return;
 
+    // 1. Show the install prompt
     deferredPrompt.prompt();
+
+    // 2. Wait for the user to respond to the prompt
     const { outcome } = await deferredPrompt.userChoice;
-    console.log(`User response to the install prompt: ${outcome}`);
+    
+    // 3. We've used the prompt, so clear it
     setDeferredPrompt(null);
+    setIsInstallable(false);
   };
+
+  // const handleInstallClick = async () => {
+  //   // Handle iOS Instructions
+  //   if (isIOS) {
+  //     setShowIOSInstructions(!showIOSInstructions);
+  //     return;
+  //   }
+
+  //   // Handle Android/Desktop Prompt
+  //   if (!deferredPrompt) return;
+
+  //   deferredPrompt.prompt();
+  //   const { outcome } = await deferredPrompt.userChoice;
+  //   console.log(`User response to the install prompt: ${outcome}`);
+  //   setDeferredPrompt(null);
+  // };
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -128,7 +159,7 @@ const LoginPage: React.FC = () => {
           </div>
 
           {/* Install App Section */}
-          {!isStandalone && (
+          {isInstallable && (
             <div className="mt-6 pt-2 animate-fade-in">
                <p className="text-center text-xs text-stone-400 mb-3">Get the full experience</p>
                <Button 
