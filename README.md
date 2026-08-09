@@ -1,11 +1,11 @@
 
 # stay
 
-> A personal memory jar.
+> _A personal memory jar._
 
 stay is a small personal journaling application I built after realizing I didn't actually need another productivity system—I just needed somewhere to write things down.
 
-
+![](./screenshots/banner1.png){width=300px}
 
 It's intentionally simple. No endless customization, no complicated knowledge graph, no "second brain". Just a clean interface where thoughts can stay until you need them again.
 
@@ -14,6 +14,8 @@ This project was heavily AI-assisted during development. I treated it less as a 
 ---
 
 ## Why?
+
+![](./screenshots/banner2.png){width=300px}
 
 I love applications like Obsidian, Notion and Logseq.
 They're incredibly powerful.
@@ -39,10 +41,12 @@ Just a quiet place for thoughts.
 ## Features
 
 - Minimal, distraction-free interface
+- Cross platform and portable.
 - Firebase-backed authentication and storage
 - Simple journaling workflow
 - Responsive design
 - Lightweight and easy to navigate
+- Easy to reproduce from the developer's end.
 
 The feature set is intentionally small. If a feature makes writing slower instead of easier, it probably doesn't belong here.
 
