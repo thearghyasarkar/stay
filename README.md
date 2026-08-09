@@ -1,20 +1,91 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
 
-# Run and deploy your AI Studio app
+# stay
 
-This contains everything you need to run your app locally.
+> A personal memory jar.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1s3GdIe_XAzOB1GUcQiGabQ7pQh0rIteq
-
-## Run Locally
-
-**Prerequisites:**  Node.js
+stay is a small personal journaling application I built after realizing I didn't actually need another productivity system—I just needed somewhere to write things down.
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+
+It's intentionally simple. No endless customization, no complicated knowledge graph, no "second brain". Just a clean interface where thoughts can stay until you need them again.
+
+This project was heavily AI-assisted during development. I treated it less as a software engineering exercise and more as an experiment in quickly turning an idea into something usable, something I'd like and personally use. It's far from perfect, and that's okay.
+
+---
+
+## Why?
+
+I love applications like Obsidian, Notion and Logseq.
+They're incredibly powerful.
+
+But somewhere along the way I found myself spending more time organising thoughts than actually writing them.
+
+Folders.
+Tags.
+Databases.
+Templates.
+Second brains.
+
+_stay_ was my personal solution to get out of that.<br>
+It isn't designed to replace knowledge management systems.<br>
+It simply gives me somewhere to quickly write something down, revisit it later, and move on with my day.<br>
+No productivity system.<br>
+No graph view.<br>
+No endless customization.<br>
+Just a quiet place for thoughts. 
+
+---
+
+## Features
+
+- Minimal, distraction-free interface
+- Firebase-backed authentication and storage
+- Simple journaling workflow
+- Responsive design
+- Lightweight and easy to navigate
+
+The feature set is intentionally small. If a feature makes writing slower instead of easier, it probably doesn't belong here.
+
+---
+
+## Built With
+- React
+- Firebase Authentication
+- Cloud Firestore
+- Markdown
+
+---
+
+## Running Locally
+
+```bash
+git clone https://github.com/thearghyasarkar/stay.git
+
+cd stay
+
+npm install
+
+npm run dev
+```
+
+You'll need your own Firebase project and configuration before the application can run. Tinker around the codebase if you want additional features added. The backend structure is kept stupidly simple. You could throw this in any of the agentic editors and expect them to add or change features for you.
+
+---
+
+## Status
+
+_stay_ is something I actively use, and I'll probably continue making small improvements whenever I find something that gets in my way.
+I'm not trying to turn it into a full productivity suite. I've Obsidian for that.
+
+---
+
+## Contributing
+
+If you have ideas that fit the philosophy of the project, feel free to open an issue or submit a pull request.
+If your idea makes the app significantly more complicated, propose it, but make sure you get the philosophy beforehand. :)
+
+---
+
+## License
+
+MIT
